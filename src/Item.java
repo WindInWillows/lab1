@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//insert one line
 public class Item {
 	public int coe=1;
 	private ArrayList<Node> item = new ArrayList<Node>();
