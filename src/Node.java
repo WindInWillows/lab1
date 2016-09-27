@@ -1,3 +1,4 @@
+//insert one line in this file.
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;
