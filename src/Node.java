@@ -1,5 +1,10 @@
 //insert one line in this file.
+<<<<<<< HEAD
 //insert another line
+=======
+//insert another line in this file.
+//insert the third line
+>>>>>>> b4b6e6ac069acbc82299239804ef130763d91e46
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;
