@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//luanmale.....
 
 // 实现了一个处理多项式的类
 
