@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//luanmale.....
+// so many error codes
 
 // 实现了一个处理多项式的类
 
