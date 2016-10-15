@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//v1
+//v2
 
 // 实现了一个处理多项式的类
 
