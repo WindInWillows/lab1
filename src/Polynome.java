@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// so many error codes
+//fix conflict
 
 // 实现了一个处理多项式的类
 

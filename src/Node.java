@@ -1,4 +1,4 @@
-//insert one line after delete some lines
+//fix conflict
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;
