@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//fix conflicts
+//no conflicts
 
 public class Item {
 	public int coe=1;

@@ -1,4 +1,4 @@
-//fix conflict
+//no conflicts
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;
