@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//no conflicts
+
 public class Item {
 	public int coe=1;
 	private ArrayList<Node> item = new ArrayList<Node>();

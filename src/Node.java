@@ -1,3 +1,5 @@
+//no conflicts
+//for 3.6
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;
