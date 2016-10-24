@@ -172,12 +172,20 @@ public class Item {
 	}
 	
 	private Integer isNumber(String s) {
-		Integer tmp = null;
-		try{
-			 tmp = Integer.parseInt(s);
-		} catch(NumberFormatException e){
-			return null;
+		char[] chs = s.toCharArray();
+		Integer ans = 0;
+		int flag = 1;
+		if(chs[0] == '-') {
+			flag = -1;
 		}
-		return tmp;
+		
+		for(int i=chs[0]=='-'?1:0; i<chs.length; i++) {
+			if(chs[i] >= '0' && chs[i] <= '9'){
+				ans = ans*10+(int)chs[i] - (int)'0';
+			} else {
+				return null;
+			}
+		}
+		return ans*flag;
 	}
 }
