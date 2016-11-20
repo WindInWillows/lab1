@@ -111,6 +111,19 @@ public class Polynome {
 		else command(strInput);
   	}
 	
+	public void getInput(String strInput){
+		// 当输入空时，则重新输入
+		if (strInput.isEmpty()){
+			opCode = 0;
+			return;
+		}
+		
+		// 此字符串中不包含“！”，则为表达式；否则，为命令。
+		// 并进行进入相应的处理函数
+		if (strInput.indexOf("!")==-1) expression(strInput);
+		else command(strInput);
+	}
+	
 	private void impOperation() {
 		
 		// 根据操作码执行相应操作	
