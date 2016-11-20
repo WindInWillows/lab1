@@ -265,7 +265,7 @@ public class Polynome {
 			opStr = "Unrecognized command";
 			return;
 		}
-		if (!this.expressionArray.isEmpty()) opStr = tmpStr.substring(index);
+		if (!this.expressionArray.isEmpty()) opStr = tmpStr.substring(index-1);//!simplify²»»á±¨´í
 		else{
 			opCode = 4;
 			opStr="Polynome hasn't been entered";

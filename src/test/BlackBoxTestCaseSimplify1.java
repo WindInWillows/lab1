@@ -12,18 +12,17 @@ public class BlackBoxTestCaseSimplify1 {
 	public void test() {
 		Polynome po = new Polynome();
 		//输入表达式
-		String expressionStr = "2*x *y";
+		String expressionStr = "x+4*y^2*z";
 		po.getInput(expressionStr);
 		
 		//输入化简命令
-		String commandStr = "!simplify x=2";
+		String commandStr = "!simplify x=1 y\t z=-1";
 		po.getInput(commandStr);
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "4*y";
+		String expected = "1-4*y^2";
 		assertEquals(expected, actual);
-//		fail("Not yet implemented");
 	}
 
 }
