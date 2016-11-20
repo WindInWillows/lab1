@@ -1,9 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import poly.Polynome;
 
 public class PolynomeTest {
@@ -23,7 +21,7 @@ public class PolynomeTest {
 		String actual = po.simplify();
 		String expected = "4*y";
 		assertEquals(expected, actual);
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }
