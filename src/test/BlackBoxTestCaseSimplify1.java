@@ -23,7 +23,7 @@ public class BlackBoxTestCaseSimplify1 {
 		String actual = po.simplify();
 		String expected = "4*y";
 		assertEquals(expected, actual);
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 }

@@ -20,8 +20,9 @@ public class PolynomeTest {
 		//得到化简结果
 		String actual = po.simplify();
 		String expected = "4*y";
+		
 		assertEquals(expected, actual);
-		//fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 }
