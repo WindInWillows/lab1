@@ -1,3 +1,5 @@
+package poly;
+
 public class Node {
 	public Node(String v,int power) {
 		this.power = power;

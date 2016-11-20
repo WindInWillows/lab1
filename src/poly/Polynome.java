@@ -1,3 +1,5 @@
+package poly;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -84,7 +86,7 @@ public class Polynome {
 		}
 	}
 	
-	public void prompt(){
+	private void prompt(){
 		// 系统开始运行后打印提示信息
 		// 可在此添加包括版本，帮助等的提示信息
 		System.out.println("<Welcome to Polynomials System 1.0>");
@@ -109,7 +111,7 @@ public class Polynome {
 		else command(strInput);
   	}
 	
-	public void impOperation() {
+	private void impOperation() {
 		
 		// 根据操作码执行相应操作	
 		switch(opCode) {
@@ -124,7 +126,7 @@ public class Polynome {
 	}
 	
 	
-	private void expression(String strInput){
+	public void expression(String strInput){
 		
 		// 对输入 StrInput 的合法性进行判定，同时去除表达式中的空格和制表符
 		if (validateExpressionAndStrip(strInput) == false){
@@ -257,7 +259,8 @@ public class Polynome {
 		}
 	}
 	
-	private void simplify() {
+	//黑盒测试
+	public String simplify() {
 		String resStr = "";
 		boolean firstFlag = true;//也许能优化
 		
@@ -265,12 +268,13 @@ public class Polynome {
 			resStr += this.expressionArray.get(i).simplify(opStr).toString(firstFlag);
 			firstFlag = false;
 		}
-		System.out.println(resStr);
+		return resStr;
 	}
 
-	private void derivative() {
+	// 白盒测试
+	public String derivative() {
 		String resStr = "";
-		boolean firstFlag = true;//也许能优化
+		boolean firstFlag = true;
 		for (int i=0; i<this.expressionArray.size();i++){
 			Item diffItem = this.expressionArray.get(i).diff(this.opStr);
 			if (diffItem == null) resStr += "";
@@ -280,9 +284,8 @@ public class Polynome {
 			}
 		}
 		if (resStr.isEmpty()) resStr = "";
-		System.out.println(resStr);
+		return resStr;
 	}
-	
 
 	private void exitSys() {
 		System.out.println("Thanks for use!");

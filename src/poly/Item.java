@@ -1,3 +1,5 @@
+package poly;
+
 import java.util.ArrayList;
 
 public class Item {
@@ -5,18 +7,18 @@ public class Item {
 	private ArrayList<Node> item = new ArrayList<Node>();
 	public boolean errorFlag = false;
 	/*
-	 *输入表达式项和项的正负，建立起表达式项的数据结构：
-	 *	表达式项的变量部分由一个ArrayList组成
-	 *	表达式的系数包含正负
+	 *杈撳叆琛ㄨ揪寮忛」鍜岄」鐨勬璐燂紝寤虹珛璧疯〃杈惧紡椤圭殑鏁版嵁缁撴瀯锛�
+	 *	琛ㄨ揪寮忛」鐨勫彉閲忛儴鍒嗙敱涓�涓狝rrayList缁勬垚
+	 *	琛ㄨ揪寮忕殑绯绘暟鍖呭惈姝ｈ礋
 	 */
 	//'-','11*x*y*x*8' => -88,Node(x,2),Node(y,1)
 	public Item(String exp, boolean isPositive) {
-		////处理系数的正负问题
+		////澶勭悊绯绘暟鐨勬璐熼棶棰�
 		if( !isPositive){
 			this.coe *= -1;
 		}
-		////拆分一个多项式中一项
-		//将'11*x*y*x*8'拆分为   列表[11 x y x 8]
+		////鎷嗗垎涓�涓椤瑰紡涓竴椤�
+		//灏�'11*x*y*x*8'鎷嗗垎涓�   鍒楄〃[11 x y x 8]
 		String[] tmp_list=exp.split("\\*");
 		for(int i=0;i<tmp_list.length;i++){
 			String tmp_i=tmp_list[i];
@@ -37,24 +39,24 @@ public class Item {
 				tmp_i = tmmp[0];
 			}
 			
-			// num=null 表示tmp_i不是数字，否则返回这个数字（int），将这个数字直接与系数相乘即可
+			// num=null 琛ㄧずtmp_i涓嶆槸鏁板瓧锛屽惁鍒欒繑鍥炶繖涓暟瀛楋紙int锛夛紝灏嗚繖涓暟瀛楃洿鎺ヤ笌绯绘暟鐩镐箻鍗冲彲
 			if( num!= null ){
 				this.coe *= num;
 			}
-			// tmp_i 为变量，在下面的代码中判断变量tmp_i是否出现过
+			// tmp_i 涓哄彉閲忥紝鍦ㄤ笅闈㈢殑浠ｇ爜涓垽鏂彉閲弔mp_i鏄惁鍑虹幇杩�
 			else{
-				//判断字符tmp_i是否已经出现的标志
-				boolean appear_flag=false;// ！也许能被优化
-				//遍历tmp_list中已经处理的部分，判断变量tmp_i是否出现过
+				//鍒ゆ柇瀛楃tmp_i鏄惁宸茬粡鍑虹幇鐨勬爣蹇�
+				boolean appear_flag=false;// 锛佷篃璁歌兘琚紭鍖�
+				//閬嶅巻tmp_list涓凡缁忓鐞嗙殑閮ㄥ垎锛屽垽鏂彉閲弔mp_i鏄惁鍑虹幇杩�
 				for(int j=0;j<this.item.size();j++){
 					Node Node_j=this.item.get(j);
-					// 变量tmp_i出现在之前处理的字符串中，对原变量对应节点的指数+1
+					// 鍙橀噺tmp_i鍑虹幇鍦ㄤ箣鍓嶅鐞嗙殑瀛楃涓蹭腑锛屽鍘熷彉閲忓搴旇妭鐐圭殑鎸囨暟+1
 					if(Node_j.v.equals(tmp_i)){
 						Node_j.inc(power);
 						appear_flag=true;
 					}
 				}
-				//添加未出现的变量
+				//娣诲姞鏈嚭鐜扮殑鍙橀噺
 				if (appear_flag==false){
 					this.item.add(new Node(tmp_i, power));
 				}
@@ -80,7 +82,7 @@ public class Item {
 		return null;
 	}
 	private Item getCopy(){
-		// 也许能优化
+		// 涔熻鑳戒紭鍖�
 		Item res = new Item();
 		res.coe = this.coe;
 		for(int i=0;i<this.item.size();i++){
@@ -89,15 +91,13 @@ public class Item {
 		return res;
 	}
 	
-	//输出当前项
+	//杈撳嚭褰撳墠椤�
 	public String toString(Boolean firstFlag) {
 		String str = "";
 		if (coe == 0) return "";
 		if(coe > 0 && !firstFlag)
 			str += "+";
 		str += coe;
-//		if(coe!=1) str += coe;
-//		else if(item.isEmpty()) str+=coe;
 		for(Node n : item) {
 			if(n.power > 1 && !n.v.equals("")){
 				if(str.length() > 0) str += "*";
@@ -111,7 +111,7 @@ public class Item {
 		return str;
 	}
 	
-	//判断两项是否能合并
+	//鍒ゆ柇涓ら」鏄惁鑳藉悎骞�
 	private boolean equals(Item it) {
 		ArrayList<Node> arr = it.item;
 		for(Node n : arr){
@@ -121,7 +121,7 @@ public class Item {
 		return true;
 	}
 	
-	//判断该项中是否有此变量
+	//鍒ゆ柇璇ラ」涓槸鍚︽湁姝ゅ彉閲�
 	private boolean hasNode(Node n) {
 		for(Node nn:item){
 			if(nn.equals(n))
@@ -146,8 +146,8 @@ public class Item {
 		return null;
 	}	
 	
-	//为表达式赋值，支持多个变量赋值
-	//返回null说明找不到
+	//涓鸿〃杈惧紡璧嬪�硷紝鏀寔澶氫釜鍙橀噺璧嬪��
+	//杩斿洖null璇存槑鎵句笉鍒�
 	public Item simplify(String value) {
 		Item tmp = getCopy();
 		
