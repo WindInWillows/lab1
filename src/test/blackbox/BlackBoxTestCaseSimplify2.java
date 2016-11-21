@@ -1,4 +1,4 @@
-package test;
+package test.blackbox;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import poly.Polynome;
 
-public class BlackBoxTestCaseSimplify4 {
+public class BlackBoxTestCaseSimplify2 {
 
 	@Test
 	public void test() {
@@ -16,12 +16,12 @@ public class BlackBoxTestCaseSimplify4 {
 		po.getInput(expressionStr);
 		
 		//输入化简命令
-		String commandStr = "!simplify x=0.1";
+		String commandStr = "!simplify a=1";
 		po.getInput(commandStr);
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "ERROR:float not support";
+		String expected = "ERROR:undefined variable";
 		assertEquals(expected, actual);
 	}
 

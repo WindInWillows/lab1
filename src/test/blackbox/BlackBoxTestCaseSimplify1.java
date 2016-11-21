@@ -1,4 +1,4 @@
-package test;
+package test.blackbox;
 
 import static org.junit.Assert.*;
 

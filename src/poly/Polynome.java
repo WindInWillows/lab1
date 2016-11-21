@@ -62,7 +62,7 @@ public class Polynome {
 	//	执行求导命令(!d/d x)时，opStr中保存x;
 	//	输出错误信息是，opStr保存错误信息。
 	private int opCode = 0;
-	private String opStr = "";
+	public String opStr = "";
 	// 字符串常量
 	private static final String EXIT_FLAG = "exit";
 	private static final String SIMPLIFY = "simplify";
@@ -373,17 +373,29 @@ public class Polynome {
 
 	// 白盒测试
 	public String derivative() {
+		//初始化要返回的字符串resStr，作为要输出的内容
 		String resStr = "";
+		
+		//firstFLag标识Item是否是第一项，第一项不需要有"+"号
 		boolean firstFlag = true;
+		
+		//对每一项Item进行求导操作，将 每个求导结果 合并到 resStr中
 		for (int i=0; i<this.expressionArray.size();i++){
+			//得到当前项求导后的新Item
 			Item diffItem = this.expressionArray.get(i).diff(this.opStr.trim());
-			if (diffItem == null) resStr += "";
+			//求导后为空，说明该项中不存在求导变量
+			if (diffItem == null) 
+				resStr += "";
 			else {
+				//将 当前求导结果 合并到 resStr中
 				resStr += diffItem.toString(firstFlag);
+				//更新firstFlag，至此一定不是第一项
 				firstFlag = false;
 			}
 		}
-		if (resStr.isEmpty()) resStr = "not found variable";
+		//该表达式中所有项均不存在求导的变量,输出0
+		if (resStr.isEmpty()) 
+			resStr = "0";
 		return resStr;
 	}
 

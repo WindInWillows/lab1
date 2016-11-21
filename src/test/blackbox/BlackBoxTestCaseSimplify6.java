@@ -1,4 +1,4 @@
-package test;
+package test.blackbox;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import poly.Polynome;
 
-public class BlackBoxTestCaseSimplify5 {
+public class BlackBoxTestCaseSimplify6 {
 
 	@Test
 	public void test() {
@@ -16,12 +16,12 @@ public class BlackBoxTestCaseSimplify5 {
 		po.getInput(expressionStr);
 		
 		//输入化简命令
-		String commandStr = "!simplify";
+		String commandStr = "!simplify x=1y=1";
 		po.getInput(commandStr);
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "1*x+4*y^2*z";
+		String expected = "ERROR:format error";
 		assertEquals(expected, actual);
 	}
 
