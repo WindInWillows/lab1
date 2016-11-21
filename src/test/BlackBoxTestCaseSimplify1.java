@@ -16,7 +16,7 @@ public class BlackBoxTestCaseSimplify1 {
 		po.getInput(expressionStr);
 		
 		//输入化简命令
-		String commandStr = "!simplify x=1 y\t z=-1";
+		String commandStr = "!simplify x=1 y	 z=-1";
 		po.getInput(commandStr);
 		
 		//得到化简结果
