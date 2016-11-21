@@ -21,7 +21,7 @@ public class BlackBoxTestCaseSimplify2 {
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "ERROR: undefined variable";
+		String expected = "ERROR:undefined variable";
 		assertEquals(expected, actual);
 	}
 

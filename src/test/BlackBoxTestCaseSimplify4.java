@@ -21,7 +21,7 @@ public class BlackBoxTestCaseSimplify4 {
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "ERROR: float not support";
+		String expected = "ERROR:float not support";
 		assertEquals(expected, actual);
 	}
 

@@ -21,7 +21,7 @@ public class BlackBoxTestCaseSimplify6 {
 		
 		//得到化简结果
 		String actual = po.simplify();
-		String expected = "ERROR: format error";
+		String expected = "ERROR:format error";
 		assertEquals(expected, actual);
 	}
 
