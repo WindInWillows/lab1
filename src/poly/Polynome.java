@@ -282,7 +282,10 @@ public class Polynome {
 			//System.out.println(s);
 			String[] sArray= s.split("=");
 			try{
-				Integer.parseInt(sArray[1]);
+				// 预先判断
+				if (sArray.length>=2){
+					Integer.parseInt(sArray[1]);
+				}
 			} catch (Exception e) {
 				//System.out.println(sArray[1]);
 				return false;
@@ -293,7 +296,7 @@ public class Polynome {
 
 	// 黑盒测试 之后 ，增添;未找到变量,返回false
 	private boolean checkVariable_defined() {
-		// tmpStr x=1 y=1 => (x=1,y=1)
+		// tmpStr x=1 y=1 => (x=1,y=1
 		String[] strArray = opStr.split(" ");
 		for (String s : strArray){
 			// s x=1 => (x,1)
@@ -327,6 +330,8 @@ public class Polynome {
 	
 	// 黑盒测试 之后 ，增添
 	private String commandCheck_OF_simplify() {
+		opStr=opStr.trim();
+		if (opStr.equals(""))	return null;
 		boolean passFlag = checkRadixPoint();
 		if (passFlag == false){
 			return "ERROR:float not support";
