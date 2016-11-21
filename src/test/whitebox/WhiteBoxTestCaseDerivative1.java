@@ -22,7 +22,7 @@ public class WhiteBoxTestCaseDerivative1 {
 		
 		//得到结果
 		String actual = po.derivative();
-		String expected = "0";
+		String expected = "ERROR:not support multi variables";
 		assertEquals(expected, actual);
 	}
 }

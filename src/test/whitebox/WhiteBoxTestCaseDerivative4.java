@@ -13,7 +13,7 @@ public class WhiteBoxTestCaseDerivative4 {
 
 		//设定参数
 		String expressionStr = "x+4*y^2*z";
-		String variStr = "x y";
+		String variStr = "y";
 		
 		//输入参数
 		Polynome po = new Polynome();
@@ -22,7 +22,7 @@ public class WhiteBoxTestCaseDerivative4 {
 		
 		//得到结果
 		String actual = po.derivative();
-		String expected = "0";
+		String expected = "8*y*z";
 		assertEquals(expected, actual);
 	}
 

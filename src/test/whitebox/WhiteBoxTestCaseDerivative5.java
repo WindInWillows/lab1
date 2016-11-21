@@ -13,7 +13,7 @@ public class WhiteBoxTestCaseDerivative5 {
 
 		//设定参数
 		String expressionStr = "x+4*y^2*z";
-		String variStr = "x y";
+		String variStr = "c";
 		
 		//输入参数
 		Polynome po = new Polynome();
