@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Item {
 	public int coe=1;
-	private ArrayList<Node> item = new ArrayList<Node>();
+	public ArrayList<Node> item = new ArrayList<Node>();
 	public boolean errorFlag = false;
 	/*
 	 *杈撳叆琛ㄨ揪寮忛」鍜岄」鐨勬璐燂紝寤虹珛璧疯〃杈惧紡椤圭殑鏁版嵁缁撴瀯锛�
@@ -138,7 +138,7 @@ public class Item {
 		return false;
 	}
 	
-	private Node hasVarialbe(String v) {
+	public Node hasVarialbe(String v) {
 		for(Node nn:item){
 			if(nn.v.equals(v))
 				return nn;
