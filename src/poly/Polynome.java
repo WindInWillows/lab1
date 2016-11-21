@@ -350,7 +350,6 @@ public class Polynome {
 	//ºÚºÐ²âÊÔ
 	public String simplify() {
 		
-		
 		String resStr = commandCheck_OF_simplify();
 		
 		if (resStr!=null){
