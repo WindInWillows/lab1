@@ -25,5 +25,4 @@ public class WhiteBoxTestCaseDerivative2 {
 		String expected = "ERROR:variable not entered";
 		assertEquals(expected, actual);
 	}
-
 }

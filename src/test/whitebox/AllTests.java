@@ -12,6 +12,5 @@ import org.junit.runners.Suite.SuiteClasses;
 	WhiteBoxTestCaseDerivative4.class, 
 	WhiteBoxTestCaseDerivative5.class, 
 	WhiteBoxTestCaseDerivative6.class })
-public class AllTests {
 
-}
+public class AllTests {}

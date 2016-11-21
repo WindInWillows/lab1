@@ -25,5 +25,4 @@ public class WhiteBoxTestCaseDerivative3 {
 		String expected = "1";
 		assertEquals(expected, actual);
 	}
-
 }

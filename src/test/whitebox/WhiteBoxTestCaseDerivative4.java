@@ -25,5 +25,4 @@ public class WhiteBoxTestCaseDerivative4 {
 		String expected = "8*y*z";
 		assertEquals(expected, actual);
 	}
-
 }

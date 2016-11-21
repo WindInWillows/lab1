@@ -25,5 +25,4 @@ public class WhiteBoxTestCaseDerivative6 {
 		String expected = "ERROR:variable cannot be number";
 		assertEquals(expected, actual);
 	}
-
 }
