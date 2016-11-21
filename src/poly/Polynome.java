@@ -289,14 +289,14 @@ public class Polynome {
 		String resStr = "";
 		boolean firstFlag = true;
 		for (int i=0; i<this.expressionArray.size();i++){
-			Item diffItem = this.expressionArray.get(i).diff(this.opStr);
+			Item diffItem = this.expressionArray.get(i).diff(this.opStr.trim());
 			if (diffItem == null) resStr += "";
 			else {
 				resStr += diffItem.toString(firstFlag);
 				firstFlag = false;
 			}
 		}
-		if (resStr.isEmpty()) resStr = "";
+		if (resStr.isEmpty()) resStr = "not found variable";
 		return resStr;
 	}
 
