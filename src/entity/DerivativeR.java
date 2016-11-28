@@ -17,10 +17,16 @@ public class DerivativeR {
 	
 	// 白盒测试
 	public String derivative() throws PolyException {
+		boolean notVarFlag = false; 
 		try{
 			Double.parseDouble(this.opStr);
+		} catch (Exception e) {
+			notVarFlag = true;  
+		}
+		if (notVarFlag==false){
 			throw new PolyException(ExceptionType.NotVarWhenDerivative);
-		} catch (Exception e) {}
+		}
+		
 		
 		if(this.opStr.trim().equals(""))
 			throw new PolyException(ExceptionType.VarNotEnterWhenDerivative);

@@ -41,7 +41,7 @@ public class PolyException extends Exception{
 			put(ExceptionType.VarNotEnterWhenDerivative, "VarNotEnterWhenDerivative: No variable was entered when derivative.");
 			put(ExceptionType.MultiVarWhenDerivative, "MultiVarWhenDerivative: Multi-variables were entered when derivative.");
 			put(ExceptionType.FloatNotSupported, "FloatNotSupported: Float number wasn\'t supported here.");
-			put(ExceptionType.UnDefinedVar, "UnDefinedVar: The variable you enter w isn't defined.");
+			put(ExceptionType.UnDefinedVar, "UnDefinedVar: The variable you enter isn't defined.");
 			put(ExceptionType.BlankMissing, "BlankMissing: Some blank is missing.");
 		};
 	};
