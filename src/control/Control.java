@@ -34,7 +34,7 @@ public class Control {
 				out.print(outputStr);
 			} 
 			catch (PolyException e) {
-				e.getMessage();
+				System.out.println(e.getMessage());
 			}
 		}
 	}
