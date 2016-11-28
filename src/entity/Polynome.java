@@ -9,16 +9,16 @@ public class Polynome {
 	private SimplifyR simplifyR = new SimplifyR();
 	private DerivativeR derivativeR = new DerivativeR();
 	
-	public String expression(String inputStr){
+	public String expression(String inputStr) throws PolyException{
 		expressionArray=expressionR.expression(inputStr);
 		return toString();
 	}
 	
-	public String simplify(String inputStr) {
+	public String simplify(String inputStr) throws PolyException {
 		return simplifyR.simplify(inputStr,expressionArray);
 	}
 
-	public String derivative(String inputStr) {
+	public String derivative(String inputStr) throws PolyException {
 		return derivativeR.derivative(inputStr,expressionArray);
 	}
 	

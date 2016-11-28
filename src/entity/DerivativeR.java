@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 
 public class DerivativeR {
-
-
+	
 	private String opStr = null;
 	private ArrayList<Item> expressionArray = new ArrayList<Item>();
-	public String derivative(String inputStr, ArrayList<Item> expressionArray) {
+	
+	public String derivative(String inputStr, ArrayList<Item> expressionArray) throws PolyException {
 		// !d/d
 		opStr=inputStr.substring(4).trim();
 		this.expressionArray = expressionArray;
@@ -16,14 +16,15 @@ public class DerivativeR {
 	}
 	
 	// 白盒测试
-	public String derivative() {
+	public String derivative() throws PolyException {
 		try{
 			Double.parseDouble(this.opStr);
-			return "ERROR:variable cannot be number";
+			throw new PolyException(ExceptionType.NotVarWhenDerivative);
 		} catch (Exception e) {}
 		
 		if(this.opStr.trim().equals(""))
-			return "ERROR:variable not entered";
+			throw new PolyException(ExceptionType.VarNotEnterWhenDerivative);
+		
 		String[] strs = this.opStr.split(" ");
 		int variCount = 0;
 		for(String tmp : strs) {
@@ -31,7 +32,7 @@ public class DerivativeR {
 				variCount++;
 		}
 		if(variCount > 1) {
-			return "ERROR:not support multi variables";
+			throw new PolyException(ExceptionType.MultiVarWhenDerivative);
 		}
 		
 		//初始化要返回的字符串resStr，作为要输出的内容

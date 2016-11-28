@@ -7,7 +7,7 @@ public class SimplifyR {
 	private String opStr = null;
 	private ArrayList<Item> expressionArray = new ArrayList<Item>();
 	
-	public String simplify(String inputStr, ArrayList<Item> expressionArray) {
+	public String simplify(String inputStr, ArrayList<Item> expressionArray) throws PolyException {
 		// !simplify
 		opStr=inputStr.substring(9);
 		this.expressionArray=expressionArray;
@@ -70,26 +70,26 @@ public class SimplifyR {
 	}
 	
 	// 黑盒测试 之后 ，增添
-	private String commandCheck_OF_simplify() {
+	private String commandCheck_OF_simplify() throws PolyException {
 		opStr=opStr.trim();
 		if (opStr.equals(""))	return null;
 		boolean passFlag = checkRadixPoint();
 		if (passFlag == false){
-			return "ERROR:float not support";
+			throw new PolyException(ExceptionType.FloatNotSupported);
 		}
 		passFlag = checkVariable_defined();
 		if (passFlag == false){
-			return "ERROR:undefined variable";
+			throw new PolyException(ExceptionType.UnDefinedVar);
 		}
 		passFlag = checkBlankValid();
 		if (passFlag == false){
-			return "ERROR:format error";
+			throw new PolyException(ExceptionType.BlankMissing);
 		}
 		return null;
 	}
 
 	//黑盒测试
-	public String simplify() {
+	public String simplify() throws PolyException {
 		
 		String resStr = commandCheck_OF_simplify();
 		

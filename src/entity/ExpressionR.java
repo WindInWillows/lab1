@@ -5,10 +5,9 @@ import java.util.ArrayList;
 public class ExpressionR {
 	
 	private ArrayList<Item> expressionArray = new ArrayList<Item>();
-	private ExceptionReport errorReport = new ExceptionReport();
 	private String errorMsg = null;
 	
-	public ArrayList<Item> expression(String inputStr) {
+	public ArrayList<Item> expression(String inputStr) throws PolyException {
 		// 去除表达式中的空格和制表符
 		inputStr = strip(inputStr);
 		
@@ -34,7 +33,7 @@ public class ExpressionR {
 		}
 		return resStr;
 	}
-	private String buildItem(String inputStr){
+	private String buildItem(String inputStr) throws PolyException{
 		
 		// 对存储表达式的列表进行初始化
 		expressionArray.clear();
@@ -69,11 +68,11 @@ public class ExpressionR {
 			return null;
 	}
 	
-	private String addNewItem(String itemStr){
+	private String addNewItem(String itemStr) throws PolyException{
 		Item newItem = (new Item(itemStr));
 		// 处理itemStr时，出错
 		if(newItem.errorFlag == true) {
-			return errorReport.getErrorMessage(5);
+			throw new PolyException(ExceptionType.UncorrectUseOfPower); 
 		}
 		expressionArray.add(newItem);
 		return null;

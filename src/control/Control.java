@@ -4,14 +4,14 @@ import boundary.In;
 import boundary.Out;
 import entity.Polynome;
 import entity.CommandType;
-import entity.ExceptionReport;
+import entity.ExceptionType;
+import entity.PolyException;
 
 public class Control {
 
 	private In in = new In();
 	private Out out = new Out();
 	private Polynome po = new Polynome();
-	private ExceptionReport errorReport = new ExceptionReport();
 	private Validator validator =new Validator();
 	private CommandType commandType = null;
 	private static final String EXIT_STR = "exit";
@@ -25,39 +25,43 @@ public class Control {
 		// 系统开始运行时，输出提示信息
 		out.prompt();
 		while (true){
-			inputStr = in.getInput();
-			if (isExpression(inputStr))
-				outputStr=expressionProcess(inputStr);
-			else
-				outputStr=commandProcess(inputStr);
-			out.print(outputStr);
+			try {
+				inputStr = in.getInput();
+				if (isExpression(inputStr))
+					outputStr=expressionProcess(inputStr);
+				else
+					outputStr=commandProcess(inputStr);
+				out.print(outputStr);
+			} 
+			catch (PolyException e) {
+				e.getMessage();
+			}
 		}
 	}
 	
-	private String expressionProcess(String inputStr) {
+	private String expressionProcess(String inputStr) throws PolyException {
 		// 格式检查：对输入表达式字符串格式的合法性进行检查
-		String validateResult = validator.validateExpression(inputStr);
-		if (validateResult == null)
+		boolean validateResult = validator.validateExpression(inputStr);
+		if (validateResult == true)
 			return po.expression(inputStr);
 		else
 			// 格式错误：表达式中包含不支持的字符
-			return validateResult;
+			throw new PolyException(ExceptionType.FormatErrorC);
+			
 	}
 
-	private String commandProcess(String inputStr) {
+	private String commandProcess(String inputStr) throws PolyException {
 		
 		// 判断表达式是否已经输入
 		if (po.isEmpty()){
 			// 表达式尚未输入
-			// throw 
-			System.out.println("Control 53:表达式未输入");
-			return errorReport.getErrorMessage(1);
+			throw new PolyException(ExceptionType.FormatErrorE);
 			}
 		// 格式检查：对输入命令格式的合法性进行检查
-		String validateResult = validator.validateCommand(inputStr);
-		if (validateResult != null)
+		boolean validateResult = validator.validateCommand(inputStr);
+		if (validateResult == false)
 			// 格式错误：命令中包含不支持的字符
-			return validateResult;
+			throw new PolyException(ExceptionType.FormatErrorC);
 		
 		// 命令类型:得到输入命令的类型，根据不同的命令，执行不同的操作，并返回相应值
 		commandType = getCommandType(inputStr); 
@@ -66,7 +70,7 @@ public class Control {
 			case  EXIT: 		out.exitSys();return null;	  	// 退出系统						
 			case  SIMPLIFY:		return po.simplify(inputStr); 	// 得到化简表达式后的结果								
 			case  DERIVATIVE:	return po.derivative(inputStr);	// 得到表达式求导后的结果						
-			case  ERROR:		return errorReport.getErrorMessage(2);// 未知的命令	
+			case  ERROR:		throw new PolyException(ExceptionType.UnregnizedCommand);// 未知的命令	
 			default: 			return "";// 返回空字符
 		}
 	}
