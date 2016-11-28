@@ -4,15 +4,16 @@ import boundary.In;
 import boundary.Out;
 import entity.Polynome;
 import entity.CommandType;
-import entity.ErrorReport;
+import entity.ExceptionReport;
 
 public class Control {
 
-	In in = new In();
-	Out out = new Out();
-	Polynome po = new Polynome();
-	ErrorReport errorReport = new ErrorReport();
-	Validator validator =new Validator();
+	private In in = new In();
+	private Out out = new Out();
+	private Polynome po = new Polynome();
+	private ExceptionReport errorReport = new ExceptionReport();
+	private Validator validator =new Validator();
+	private CommandType commandType = null;
 	private static final String EXIT_STR = "exit";
 	private static final String SIMPLIFY_STR = "simplify";
 	private static final String DERIVATIVE_STR = "d/d";
@@ -39,23 +40,27 @@ public class Control {
 		if (validateResult == null)
 			return po.expression(inputStr);
 		else
+			// 格式错误：表达式中包含不支持的字符
 			return validateResult;
 	}
 
 	private String commandProcess(String inputStr) {
 		
 		// 判断表达式是否已经输入
-		if (po.isEmpty())
+		if (po.isEmpty()){
 			// 表达式尚未输入
+			// throw 
+			System.out.println("Control 53:表达式未输入");
 			return errorReport.getErrorMessage(1);
-
+			}
 		// 格式检查：对输入命令格式的合法性进行检查
 		String validateResult = validator.validateCommand(inputStr);
 		if (validateResult != null)
+			// 格式错误：命令中包含不支持的字符
 			return validateResult;
 		
 		// 命令类型:得到输入命令的类型，根据不同的命令，执行不同的操作，并返回相应值
-		CommandType commandType = getCommandType(inputStr); 
+		commandType = getCommandType(inputStr); 
 		switch(commandType) {
 						
 			case  EXIT: 		out.exitSys();return null;	  	// 退出系统						

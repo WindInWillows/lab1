@@ -1,9 +1,9 @@
+import control.Control;
 
-public class main {
+public class Poly {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Control p= new Control();
 	}
 
 }
